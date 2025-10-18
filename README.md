@@ -1,4 +1,4 @@
-# SWENG-Dev-I-Project-Marketplace
+# SWENG-I-Project-Marketplace
 *SW-ENG-I Marketplace App*
 
 ## Description
