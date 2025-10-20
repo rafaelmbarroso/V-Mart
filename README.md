@@ -1,9 +1,19 @@
 # SWENG-I-Project-Marketplace
 *SW-ENG-I Marketplace App*
 
-## Description
-The purpose of this app is to serve as a
-secondhand marketplace for university students.
+## Project Brief
+Every semester, students on or off campus get rid of things they may not need.
+This may range from books, supplies, and maybe even furniture of computers. Regardless of 
+what they may need to get rid of, there's likely another student in need that could make use of
+need the very thing that other student is looking to get rid of.
+
+## Project Concept
+Our proposed marketplace app is meant for students to reach out to other students and make 
+arrangements to acquire or give out items which they no longer need or that they themselves need.
+
+## Technical/Specifications
+- Framework: We'll be using the Django & Bootstrap frameworks for this project.
+- Database: We'll be using SQLite as our database for this project.
 
 *Final name TBD*
 
@@ -22,3 +32,5 @@ Project by:
 Rafael M. Barroso
 Ryan B
 Daniel Aguirre
+
+*Roles TBD*
