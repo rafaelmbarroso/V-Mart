@@ -18,11 +18,11 @@ arrangements to acquire or give out items which they no longer need or that they
 *Final name TBD*
 
 ## Agile/Sprint Planning
-- Sprint 1: Wireframe/Layout Planning?
-- Sprint 2: Build out individual posting view
-- Sprint 3: Build out grid/listings view
-- Sprint 4: Build out DB
-- Sprint 5: TBD
+- Sprint 1: Wireframe/Layout Planning
+- Sprint 2: Technical Planning/Backend & DB
+- Sprint 3: Build out individual posting view
+- Sprint 4: Build out grid/listings view
+- Sprint 5: Build out DB
 - Sprint 6: TBD
 - Sprint 7: TBD
 - Sprint 8: TBD
