@@ -1,6 +1,6 @@
 *"Project Marketplace"*
 # V-Mart
-*SW-ENG-I Marketplace App*
+*A student focused comminity thrifting app*
 
 ## Project Brief
 Every semester, students on or off campus get rid of things they may not need.
