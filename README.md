@@ -1,20 +1,6 @@
 # SWENG-I-Project-Marketplace
 *SW-ENG-I Marketplace App*
 
-<<<<<<< HEAD
-   @@@@@@@@@@@@@@@@
-  @@              @@
-  @@              @@
-@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@     @@@@@@@@
-@@@@@@@ @@@@@@@@@@@@@@
-@@@@@@@@     @@@@@@@@@
-@@@@@@@@@@@@@ @@@@@@@@
-@@@@@@@      @@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@
-
-=======
->>>>>>> 6fbeffcff5f04a9b4fb0bae71e1d62325d07275c
 ## Project Brief
 Every semester, students on or off campus get rid of things they may not need.
 This may range from books, supplies, and maybe even furniture of computers. Regardless of 
