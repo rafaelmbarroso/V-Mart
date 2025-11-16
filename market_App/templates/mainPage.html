@@ -3,12 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Welcome, {{ user.username }}!</h1>
 
-    <p>Sign in Successfull.</p>
+<body class="bg-light">
 
-    <a href="{% url 'logout' %}">Logout</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <div class="ms-auto">
+        <a href="{% url 'profile' %}" class="btn btn-light me-2">My Profile</a>
+        <a href="{% url 'logout' %}" class="btn btn-light">Logout</a>
+    </div>
+</nav>
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Welcome, {{ user.username }}!</h1>
+        <p class="text-muted">Sign in successful.</p>
+    </div>
+
+    <h3 class="mb-4">Products</h3>
+
+    <div class="row g-4">
+        {% for product in products %}
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted">{{ product.description }}</p>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-light w-100">View</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <p class="text-muted">No products yet.</p>
+        {% endfor %}
+    </div>
+
+</div>
+
 </body>
 </html>

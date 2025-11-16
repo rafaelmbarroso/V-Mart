@@ -29,3 +29,7 @@ def dashboard(request):
 def logOut(request):
     logout(request)
     return redirect('signin')
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
