@@ -17,7 +17,14 @@
         <p><strong>Email:</strong> {{ user.email }}</p>
 
         <div class="mt-4 text-center">
-            <a href="{% url 'dashboard' %}" class="btn btn-light">Back to Shopping</a>
+            <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Shopping</a>
+
+            <br>
+            <br>
+
+            <a href="{% url 'create_listing' %}" class="btn btn-primary">
+                + Create Listing
+            </a>
         </div>
     </div>
 

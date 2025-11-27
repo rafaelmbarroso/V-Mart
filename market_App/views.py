@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from .forms import Listing_Form
 
 def home(request):
     return render(request, 'home.html')
@@ -33,3 +34,17 @@ def logOut(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+
+@login_required
+def create_Listing(request):
+    if request.method == "POST":
+        form = Listing_Form(request.POST)
+        if form.is_valid():
+            listing = form.save(commit=False)
+            listing.user = request.user.student
+            listing.save()
+            return redirect('dashboard')
+    else:
+        form = Listing_Form()
+
+    return render(request, "create_listing.html", {"form": form})
