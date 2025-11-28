@@ -8,24 +8,56 @@
 
 <body class="bg-light">
 
-<div class="container py-5" style="max-width: 600px;">
+<div class="container py-5" style="max-width: 900px;">
 
-    <h1 class="mb-4 text-center">User Profile</h1>
+    <!-- Profile Card -->
+    <div class="mb-5">
+        <h1 class="mb-4 text-center">User Profile</h1>
 
-    <div class="card shadow-sm p-4">
-        <p><strong>Username:</strong> {{ user.username }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
+        <div class="card shadow-sm p-4">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
 
-        <div class="mt-4 text-center">
-            <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Shopping</a>
+            <div class="mt-4 text-center">
+                <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Shopping</a>
 
-            <br>
-            <br>
+                <br><br>
 
-            <a href="{% url 'create_listing' %}" class="btn btn-primary">
-                + Create Listing
-            </a>
+                <a href="{% url 'create_listing' %}" class="btn btn-primary">
+                    + Create Listing
+                </a>
+            </div>
         </div>
+    </div>
+
+    <h3 class="mt-5 mb-3">My Listings</h3>
+
+    <div class="row g-4">
+        {% for item in my_listings %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+
+                        {% if item.price %}
+                            <p class="fw-bold">${{ item.price }}</p>
+                        {% endif %}
+
+                        <p class="text-muted small">
+                            {{ item.description|truncatewords:15 }}
+                        </p>
+
+                        <p class="text-muted small">
+                            Created: {{ item.creation_Date|date:"M d, Y" }}
+                        </p>
+
+                        <a class="btn btn-outline-primary w-100 disabled">View Listing</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p class="text-muted">You have not created any listings yet.</p>
+        {% endfor %}
     </div>
 
 </div>
