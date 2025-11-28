@@ -31,22 +31,33 @@
     <p class="text-muted">Sign in successful.</p>
 </div>
 
-<h3 class="mb-4">Products</h3>
+<h3 class="mb-4">My Listings</h3>
 
-    <div class="row g-4">
-        {% for product in products %}
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text text-muted">{{ product.description }}</p>
-                    <a href="{% url 'product_detail' product.id %}" class="btn btn-light w-100">View</a>
+<div class="row g-4">
+    {% for product in listings %}
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+
+                {% if product.price %}
+                <p class="card-text fw-bold">${{ product.price }}</p>
+                {% endif %}
+
+                <p class="card-text text-muted small">{{ product.description|truncatewords:15 }}</p>
+
+                <p class="text-muted small">
+                    Created: {{ product.creation_Date|date:"M d, Y" }}
+                </p>
+
+                <a href="#" class="btn btn-light w-100 disabled">View (Not Built Yet)</a>
             </div>
         </div>
-        {% empty %}
-            <p class="text-muted">No products yet.</p>
-        {% endfor %}
     </div>
+    {% empty %}
+        <p class="text-muted">You don't have any listings yet.</p>
+    {% endfor %}
+</div>
 
 </div>
 

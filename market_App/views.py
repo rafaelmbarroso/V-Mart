@@ -23,9 +23,13 @@ def signin(request):
     else:
         return render(request, 'signin.html')
 
-@login_required(login_url='signin')
+@login_required
 def dashboard(request):
-    return render(request, 'mainPage.html')
+    student = request.user.student
+    listings = student.listings.all() 
+    return render(request, 'mainPage.html', {
+        'listings': listings
+    })
 
 def logOut(request):
     logout(request)
@@ -43,8 +47,12 @@ def create_Listing(request):
             listing = form.save(commit=False)
             listing.user = request.user.student
             listing.save()
-            return redirect('dashboard')
+            return redirect('listing_confirmation')
     else:
         form = Listing_Form()
 
     return render(request, "create_listing.html", {"form": form})
+
+@login_required
+def listing_confirmation(request):
+    return render(request, "listing_confirmation.html")
