@@ -21,17 +21,16 @@ arrangements to acquire or give out items which they no longer need or that they
 ## Agile/Sprint Planning
 - Sprint 1: Wireframe/Layout Planning
 - Sprint 2: Technical Planning/Backend & DB
-- Sprint 3: Build out individual posting view
-- Sprint 4: Build out grid/listings view
-- Sprint 5: Build out DB
-- Sprint 6: TBD
-- Sprint 7: TBD
-- Sprint 8: TBD
-- Sprint 9: TBD
+- Sprint 3: Build general structure, entry page, login, generic dashboard
+- Sprint 4: Modify DB
+- Sprint 5: Allow for a profile view page, relavant to the current logged in user
+- Sprint 6: Allow for listing creation, and connect it to the relavant user
+- Sprint 7: Display all listings on dashboard, as well as show personal listings on profile page
+- Sprint 8: Add a search function
+- Sprint 9: Create a chatroom for users to interact, cant make a sale without communication
+- Sprint 10: Final touch ups, make the website look nice/improve user experience
 
 Project by:
-Rafael M. Barroso
-Ryan B
-Daniel Aguirre
-
-*Roles TBD*
+Rafael M. Barroso - Frontend development using bootstrap
+Ryan B - Primarily Backend development, created and managed all relavant views/models/forms/DB, tied urls together
+Daniel Aguirre - Aided in both front and back end, handled documentation and figma wireframe
