@@ -3,12 +3,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Student, Listings
-from .forms import Listing_Form
-from .forms import SignupForm
+from .forms import SignupForm, Listing_Form
 
+# Entry Page
 def home(request):
     return render(request, 'home.html')
 
+# Sign in Page
 def signin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -24,7 +25,8 @@ def signin(request):
             return render(request, 'signin.html')
     else:
         return render(request, 'signin.html')
-    
+
+# Sign up Page    
 def signup(request):
     if request.method == "POST":
         form = SignupForm(request.POST)
@@ -33,7 +35,7 @@ def signup(request):
             user.set_password(form.cleaned_data["password"])
             user.save()
 
-            # Create the Student profile
+            # Create the User profile
             Student.objects.create(
                 user=user,
                 username=user.username,
@@ -47,17 +49,19 @@ def signup(request):
 
     return render(request, "signup.html", {"form": form})
 
+# Main Page, from here must be logged in to see things
 @login_required
 def dashboard(request):
     listings = Listings.objects.all()
     return render(request, 'mainPage.html', {
         'listings': listings
     })
-
+# Send user back to sign in page
 def logOut(request):
     logout(request)
     return redirect('signin')
 
+# User profile
 @login_required
 def profile(request):
     student = request.user.student
@@ -66,6 +70,7 @@ def profile(request):
         "my_listings": my_listings
     })
 
+# Listing Creation
 @login_required
 def create_Listing(request):
     if request.method == "POST":
@@ -80,6 +85,7 @@ def create_Listing(request):
 
     return render(request, "create_listing.html", {"form": form})
 
+# Confirmation page
 @login_required
 def listing_confirmation(request):
     return render(request, "listing_confirmation.html")
