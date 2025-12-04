@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'market_App',
-    'bootstrap5',
+    'tailwindcss',
 ]
 
 MIDDLEWARE = [
