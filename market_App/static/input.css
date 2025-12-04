@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 
 @theme {
-    --color-utrgv-orange: #cb4900;
+    --color-utrgv-orange: #f15a22;
+}
+
+@font-face {
+    font-family: lato;
+    src: url();
 }

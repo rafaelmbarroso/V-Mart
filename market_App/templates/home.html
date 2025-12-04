@@ -9,18 +9,43 @@
   <link href="../static/output.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="flex flex-col w-screen h-screen justify-center items-center text-center">
+<body class="
+            flex 
+            flex-col 
+            w-screen 
+            h-screen 
+            justify-center 
+            items-center 
+            text-center
+            bg-gradient-to-br
+            from-utrgv-orange
+            from-40%
+            to-orange-200
+            
+            ">
 
 <!--
 <body class="flex flex-column justify-content-center align-items-center text-center text-white">
 -->
 
   <div class="container">
-    <h1 class="text-6xl font-bold mb-3">Howdy! Welcome to V-Mart!</h1>
-    <p class="text-4xl">Safe and trusted trades here!</p>
+    <h1 class="text-8xl font-smibold text-white mb-3 text-shadow-2xs">Howdy! Welcome to V-Mart!</h1>
+    <p class="text-4xl text-white">Safe and trusted trades here!</p>
     <br>
     <!-- Sign-in button -->
-    <a href="{% url 'signin' %}" class="bg-white rounded-4xl border-b-black border-2 text-xl pl-6 pr-6 pt-2 pb-2 m-4">
+    <a href="{% url 'signin' %}" class="bg-white 
+                                          shadow-xl 
+                                          rounded-4xl 
+                                          border-b-black 
+                                          border-2 
+                                          text-xl 
+                                          pl-6 
+                                          pr-6 
+                                          pt-2 
+                                          pb-2 
+                                          m-4 
+                                          hover:bg-black 
+                                          hover:text-white">
       Sign in With Your Username
     </a>
   </div>
