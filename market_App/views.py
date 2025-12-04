@@ -53,7 +53,7 @@ def signup(request):
 @login_required
 def dashboard(request):
     listings = Listings.objects.all()
-    return render(request, 'testPage.html', {
+    return render(request, 'mainPage.html', {
         'listings': listings
     })
 # Send user back to sign in page
