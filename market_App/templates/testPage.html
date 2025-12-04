@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        :root {
+            --utrgv-orange: #F15A22;
+            --utrgv-orange-light: #FF7B47;
+            --utrgv-orange-dark: #D94D1A;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFF5F0 0%, #FFE8DC 100%);
+        }
+
+        .navbar {
+            background: var(--utrgv-orange) !important;
+            justify-content: center;
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .navbar .btn-light {
+            background-color: white;
+            border-color: white;
+            color: var(--utrgv-orange);
+            font-weight: 500;
+        }
+
+        .navbar .btn-light:hover {
+            background-color: var(--utrgv-orange-light);
+            border-color: white;
+            color: white;
+        }
+
+        .navbar-center {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background-color: var(--utrgv-orange) !important;
+            border-color: var(--utrgv-orange) !important;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--utrgv-orange-dark) !important;
+            border-color: var(--utrgv-orange-dark) !important;
+        }
+
+        .listing-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateX(10deg) rotateY(-5deg) scale(2);
+            box-shadow:
+                8px 8px 0px rgba(241, 90, 34, 0.2),
+                16px 16px 0px rgba(241, 90, 34, 0.1),
+                0 10px 30px rgba(241, 90, 34, 0.15);
+            border: 2px solid var(--utrgv-orange-light);
+            background: white;
+        }
+
+        .listing-card:hover {
+            transform: perspective(1000px) translateY(-10px) rotateX(5deg) rotateY(0deg) scale(2);
+            box-shadow:
+                10px 10px 0px rgba(241, 90, 34, 0.2),
+                20px 20px 0px rgba(241, 90, 34, 0.1),
+                0 20px 40px rgba(241, 90, 34, 0.25);
+        }
+
+        .listing-card .card-title {
+            color: var(--utrgv-orange-dark);
+        }
+
+        .listing-card .fw-bold {
+            color: var(--utrgv-orange);
+        }
+
+        h1.fw-bold {
+            color: var(--utrgv-orange) !important;
+        }
+
+        h3 {
+            color: var(--utrgv-orange-dark);
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm px-3">
+    <div class="navbar-center">
+        <a class="navbar-brand" href="#">Dashboard</a>
+        <a href="{% url 'profile' %}" class="btn btn-light">My Profile</a>
+        <a href="{% url 'logout' %}" class="btn btn-light">Logout</a>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div class="d-flex justify-content-start">
+        <a href="{% url 'create_listing' %}" class="btn btn-primary">
+            + Create Listing
+        </a>
+    </div>
+</div>
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+    <h1 class="fw-bold" style="font-size: 150%; font-family: 'Comic Sans MS', 'Comic Sans', cursive;">Welcome, {{ user.username }}!</h1>
+    <p class="text-muted">Sign in successful.</p>
+</div>
+
+<h3 class="mb-4">Current Listings</h3>
+
+<div class="row g-4">
+    {% for product in listings %}
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <div class="card shadow-sm h-100 listing-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+
+                {% if product.price %}
+                <p class="card-text fw-bold">${{ product.price }}</p>
+                {% endif %}
+
+                <p class="card-text text-muted small">{{ product.description|truncatewords:15 }}</p>
+
+                <p class="text-muted small">
+                    Created: {{ product.creation_Date|date:"M d, Y" }}
+                </p>
+
+                <a href="#" class="btn btn-light w-100 disabled">View (Not Built Yet)</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p class="text-muted">There are no listings yet.</p>
+    {% endfor %}
+</div>
+
+</div>
+
+</body>
+</html>

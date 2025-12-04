@@ -13,10 +13,21 @@ Our proposed marketplace app is meant for students to reach out to other student
 arrangements to acquire or give out items which they no longer need or that they themselves need.
 
 ## Technical/Specifications
-- Framework: We'll be using the Django & Bootstrap frameworks for this project.
+- Framework: We'll be using the Django & Tailwindcss frameworks for this project.
 - Database: We'll be using SQLite as our database for this project.
 
-*Final name TBD*
+Final Name = V-Mart Marketplace
+
+## FrameWork Methodology
+
+For the framework the idea was to figure out how our app was going to work. Figma was used as a way to facilitate the design process. The figma was just a visual representation of how we wanted our "views" to look. Features are subject to change, functionalities may be added or deleted from what the prototype displayed.
+
+## Front End Framwork
+
+For the rest of this project we plan to switch to using Tailwindcss over bootstrap for our front end framework. This is due to tailwinds' felxibility on the design process
+
+Figma Prototype Link: https://www.figma.com/proto/62PwoXtLwUPOOXqiOM2hPD/V-Mart-Wireframe-SWE1-3340-02?node-id=1-411&t=LrkaSQ9cuchYaujX-1&starting-point-node-id=12%3A69
+
 
 ## Agile/Sprint Planning
 - Sprint 1: Wireframe/Layout Planning
@@ -31,6 +42,6 @@ arrangements to acquire or give out items which they no longer need or that they
 - Sprint 10: Final touch ups, make the website look nice/improve user experience
 
 Project by:
-Rafael M. Barroso - Frontend development using bootstrap
+Rafael M. Barroso - Frontend development using tailwindcss
 Ryan B - Primarily Backend development, created and managed all relavant views/models/forms/DB, tied urls together
 Daniel Aguirre - Aided in both front and back end, handled documentation and figma wireframe
