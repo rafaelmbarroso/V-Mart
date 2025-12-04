@@ -10,8 +10,4 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path("listings/create/", views.create_Listing, name="create_listing"),
     path('listing-confirmation/', views.listing_confirmation, name="listing_confirmation"),
-    path('my_listings/', views.my_listings, name='my_listings'),
-    path('edit_listing/<int:pk>/', views.edit_listing, name='edit_listing'),
-    path('delete_listing/<int:pk>/', views.delete_listing, name='delete_listing'),
-
 ]

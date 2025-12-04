@@ -11,7 +11,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-3">
     <a class="navbar-brand" href="#">Dashboard</a>
     <div class="ms-auto">
-        <a href="{% url 'my_listings' %}" class="btn btn-light me-2">My Listings</a>
         <a href="{% url 'profile' %}" class="btn btn-light me-2">My Profile</a>
         <a href="{% url 'logout' %}" class="btn btn-light">Logout</a>
     </div>
@@ -35,42 +34,30 @@
 <h3 class="mb-4">Current Listings</h3>
 
 <div class="row g-4">
-        {% for product in listings %}
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
+    {% for product in listings %}
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
 
-                    <h5 class="card-title">{{ product.name }}</h5>
+                {% if product.price %}
+                <p class="card-text fw-bold">${{ product.price }}</p>
+                {% endif %}
 
-                    {% if product.price %}
-                    <p class="card-text fw-bold">${{ product.price }}</p>
-                    {% endif %}
+                <p class="card-text text-muted small">{{ product.description|truncatewords:15 }}</p>
 
-                    <p class="card-text text-muted small">{{ product.description|truncatewords:15 }}</p>
+                <p class="text-muted small">
+                    Created: {{ product.creation_Date|date:"M d, Y" }}
+                </p>
 
-                    <p class="text-muted small">
-                        Created: {{ product.creation_Date|date:"M d, Y" }}
-                    </p>
-
-                    <!-- edit and delete function -->
-                    {% if product.user == request.user.student %} 
-                     <div class="d-flex gap-2 mt-3">
-                        <a href="{% url 'edit_listing' product.pk %}" class="btn btn-primary w-100">
-                            Edit
-                        </a>
-
-                        <a href="{% url 'delete_listing' product.pk %}" class="btn btn-outline-danger w-100">
-                            Delete
-                        </a>
-                     </div>
-                    {% endif %}
-                </div>
+                <a href="#" class="btn btn-light w-100 disabled">View (Not Built Yet)</a>
             </div>
         </div>
-        {% empty %}
-            <p class="text-muted">There are no listings yet.</p>
-        {% endfor %}
     </div>
+    {% empty %}
+        <p class="text-muted">There are no listings yet.</p>
+    {% endfor %}
+</div>
 
 </div>
 

@@ -1,9 +1,0 @@
-<h2>Edit Listing</h2>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save Changes</button>
-</form>
-
-<a href="{% url 'my_listings' %}">Back to My Listings</a>
