@@ -2,3 +2,5 @@
 /node_modules/
 # Ignore Pycache
 /market_App/__pycache__/
+# Ignore PyCharm files
+/.idea/
