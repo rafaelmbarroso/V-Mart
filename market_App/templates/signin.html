@@ -23,8 +23,18 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Password</label>
-                <input type="password" name="password" class="form-control">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-group">
+                    <input type="password"
+                           name="password"
+                           id="password"
+                           class="form-control">
+                    <button type="button"
+                            class="btn btn-outline-secondary"
+                            id="togglePassword">
+                        Show
+                    </button>
+                </div>
             </div>
 
             {% if messages %}
@@ -45,6 +55,17 @@
 
     </div>
 </div>
+
+<script>
+    const passwordInput = document.getElementById('password');
+    const toggleBtn = document.getElementById('togglePassword');
+
+    toggleBtn.addEventListener('click', function () {
+        const isPassword = passwordInput.type === 'password';
+        passwordInput.type = isPassword ? 'text' : 'password';
+        toggleBtn.textContent = isPassword ? 'Hide' : 'Show';
+    });
+</script>
 
 </body>
 </html>
