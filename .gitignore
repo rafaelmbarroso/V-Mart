@@ -2,5 +2,9 @@
 /node_modules/
 # Ignore Pycache
 /market_App/__pycache__/
+/studentmarketplace/__pycache__/
 # Ignore PyCharm files
 /.idea/
+# Extras to ignore
+/package-lock.json
+/package.json
