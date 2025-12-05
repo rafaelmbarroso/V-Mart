@@ -124,3 +124,7 @@ def delete_listing(request, pk):
 
     return render(request, 'delete_listing.html', {'listing': listing})
 
+@login_required
+def view_listing(request, pk):
+    listing = get_object_or_404(Listings, pk=pk)
+    return render(request, "view_listing.html", {"listing": listing})

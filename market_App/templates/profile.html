@@ -51,7 +51,9 @@
                             Created: {{ item.creation_Date|date:"M d, Y" }}
                         </p>
 
-                        <a class="btn btn-outline-primary w-100 disabled">View Listing</a>
+                        <a href="{% url 'view_listing' item.pk %}" class="btn btn-outline-primary w-100">
+    View Listing
+</a>
                     </div>
                 </div>
             </div>
