@@ -91,11 +91,7 @@ def listing_confirmation(request):
     return render(request, "listing_confirmation.html")
 
 # Edit the listings block
-@login_required
-def my_listings(request):
-    student = request.user.student
-    listings = Listings.objects.filter(user=student)
-    return render(request, 'my_listings.html', {'listings': listings})
+
 
 @login_required
 def edit_listing(request, pk):
@@ -105,7 +101,7 @@ def edit_listing(request, pk):
         form = Listing_Form(request.POST, instance=listing)
         if form.is_valid():
             form.save()
-            return redirect('my_listings')
+            return redirect('profile')
 
     else:
         form = Listing_Form(instance=listing)
@@ -120,7 +116,7 @@ def delete_listing(request, pk):
 
     if request.method == "POST":
         listing.delete()
-        return redirect('my_listings')
+        return redirect('profile')
 
     return render(request, 'delete_listing.html', {'listing': listing})
 
