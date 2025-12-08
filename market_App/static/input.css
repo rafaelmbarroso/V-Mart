@@ -5,6 +5,16 @@
 }
 
 @font-face {
-    font-family: lato;
-    src: url();
+    font-family: "lato";
+    src: url('/market_App/static/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: "figtree";
+    src: url('/market_App/static/Figtree/static/Figtree-Regular.ttf');
+}
+
+@theme{
+    --font-lato: "lato", sans-serif;
+    --font-figtree: "figtree", sans-serif;
 }
