@@ -74,7 +74,7 @@ def profile(request):
 @login_required
 def create_Listing(request):
     if request.method == "POST":
-        form = Listing_Form(request.POST)
+        form = Listing_Form(request.POST, request.FILES)
         if form.is_valid():
             listing = form.save(commit=False)
             listing.user = request.user.student
@@ -98,7 +98,7 @@ def edit_listing(request, pk):
     listing = get_object_or_404(Listings, pk=pk, user=request.user.student)
 
     if request.method == "POST":
-        form = Listing_Form(request.POST, instance=listing)
+        form = Listing_Form(request.POST, request.FILES, instance=listing)
         if form.is_valid():
             form.save()
             return redirect('profile')

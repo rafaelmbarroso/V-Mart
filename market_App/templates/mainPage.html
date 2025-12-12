@@ -42,7 +42,12 @@
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
             <div class="bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-sm drop-shadow-zinc-800">
                 <div class="card-body">
+                    
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" class="img-fluid mb-2" alt="{{ product.name }}">
+                    {% endif %}
 
+                
                     <h5 class="card-title">{{ product.name }}</h5>
 
                     {% if product.price %}

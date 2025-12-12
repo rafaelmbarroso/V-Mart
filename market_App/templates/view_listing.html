@@ -12,6 +12,9 @@
     <div class="card shadow p-4">
 
         <h2 class="mb-3">{{ listing.name }}</h2>
+        {% if listing.image %}
+        <img src="{{ listing.image.url }}" class="img-fluid mb-3" alt="{{ listing.name }}">
+        {% endif %}
 
         {% if listing.price %}
             <h4 class="text-success mb-4">${{ listing.price }}</h4>

@@ -17,5 +17,12 @@ class Listings(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     creation_Date = models.DateTimeField(auto_now_add=True)
 
+    #image upload 
+    image = models.ImageField(
+        upload_to='listing_images/', 
+        blank=True,
+        null=True,
+    )
+
     def __str__(self):
         return self.name
