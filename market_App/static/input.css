@@ -6,12 +6,12 @@
 
 @font-face {
     font-family: "lato";
-    src: url('/market_App/static/Lato/Lato-Regular.ttf');
+    src: url('Lato/Lato-Regular.ttf');
 }
 
 @font-face {
     font-family: "figtree";
-    src: url('/market_App/static/Figtree/static/Figtree-Regular.ttf');
+    src: url('Figtree/static/Figtree-Regular.ttf');
 }
 
 @theme{
