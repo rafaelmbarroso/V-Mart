@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <!--
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    -->
     <link href="../static/output.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="flex flex-col bg-white font-lato w-screen h-screen">
+<body class="flex flex-col items-center bg-stone-200 font-lato w-screen h-screen">
 
-<nav class="flex flex-row align-center w-screen bg-utrgv-orange shadow-orange-900 shadow-md p-4">
+<nav class="flex flex-row align-center w-screen bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
     <a class="text-2xl text-white" href="#">Dashboard</a>
     <div class="ms-auto">
         
@@ -20,18 +17,10 @@
     </div>
 </nav>
 
-<div class="container mt-3">
-    <div class="d-flex justify-content-start">
-        <a href="{% url 'create_listing' %}" class="btn btn-primary">
-            + Create Listing
-        </a>
-    </div>
-</div>
-
 <div class="container py-5">
 
     <div class="text-center mb-5">
-    <h1 class="fw-bold">Welcome, {{ user.username }}!</h1>
+    <h1 class="text-3xl font-bold">Welcome, {{ user.username }}!</h1>
     <p class="text-muted">Sign in successful.</p>
 </div>
 
@@ -40,7 +29,7 @@
 <div class="flex flex-row">
         {% for product in listings %}
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-            <div class="bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-sm drop-shadow-zinc-800">
+            <div class="bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-md drop-shadow-zinc-800">
                 <div class="card-body">
                     
                     {% if product.image %}
@@ -48,26 +37,26 @@
                     {% endif %}
 
                 
-                    <h5 class="card-title">{{ product.name }}</h5>
+                    <h5 class="text-xl font-bold">{{ product.name }}</h5>
 
                     {% if product.price %}
-                    <p class="card-text fw-bold">${{ product.price }}</p>
+                    <p class="font-bold text-green-800">${{ product.price }}</p>
                     {% endif %}
 
-                    <p class="card-text text-muted small">{{ product.description|truncatewords:15 }}</p>
+                    <p class="text-zinc-700">{{ product.description|truncatewords:15 }}</p>
 
-                    <p class="text-muted small">
+                    <p class="text-zinc-700">
                         Created: {{ product.creation_Date|date:"M d, Y" }}
                     </p>
 
                     <!-- edit and delete function -->
                     {% if product.user == request.user.student %} 
-                     <div class="d-flex gap-2 mt-3">
-                        <a href="{% url 'edit_listing' product.pk %}" class="btn btn-primary w-100">
+                     <div class="flex flex-row items-center">
+                        <a href="{% url 'edit_listing' product.pk %}" class="button w-100px bg-zinc-300 mr-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl">
                             Edit
                         </a>
 
-                        <a href="{% url 'delete_listing' product.pk %}" class="btn btn-outline-danger w-100">
+                        <a href="{% url 'delete_listing' product.pk %}" class="button w-100px bg-red-500 ml-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl">
                             Delete
                         </a>
                      </div>
@@ -80,6 +69,14 @@
         {% endfor %}
     </div>
 
+</div>
+
+<div class="fixed bottom-0 right-0 mb-10 mr-10">
+    <div class="d-flex justify-content-start">
+        <a href="{% url 'create_listing' %}" class="button text-2xl text-white bg-utrgv-orange pt-4 pb-4 pl-6 pr-6 rounded-4xl drop-shadow-md drop-shadow-zinc-800">
+            + Create Listing
+        </a>
+    </div>
 </div>
 
 </body>
