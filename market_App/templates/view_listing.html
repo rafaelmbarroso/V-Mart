@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Listing Details</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="../../static/output.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="bg-light">
+<body class="flex flex-col w-screen h-screen bg-stone-200 justify-center items-center font-lato">
 
-<div class="container py-5" style="max-width: 700px;">
-    <div class="card shadow p-4">
+<div class="flex flex-col w-1/3">
+    <div class="flex flex-col bg-white rounded-4xl p-8 drop-shadow-md drop-shadow-zinc-600">
 
-        <h2 class="mb-3">{{ listing.name }}</h2>
+        <h2 class="text-3xl font-semibold pt-2 pb-2">{{ listing.name }}</h2>
         {% if listing.image %}
         <img src="{{ listing.image.url }}" class="img-fluid mb-3" alt="{{ listing.name }}">
         {% endif %}
 
         {% if listing.price %}
-            <h4 class="text-success mb-4">${{ listing.price }}</h4>
+            <h4 class="font-semibold text-lg text-green-800 pt-2 pb-2">${{ listing.price }}</h4>
         {% endif %}
 
         <p class="mb-4">{{ listing.description }}</p>
@@ -27,12 +27,12 @@
             Date: {{ listing.creation_Date|date:"M d, Y" }}
         </p>
 
-        <div class="mt-4">
-            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back</a>
+        <div class="flex flex-row w-max pt-2 pb-2">
+            <a href="{% url 'dashboard' %}" class="button bg-stone-200 pt-2 pb-2 pl-4 pr-4 mr-1 rounded-4xl">Back</a>
 
             {% if listing.user == request.user.student %}
-                <a href="{% url 'edit_listing' listing.pk %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'delete_listing' listing.pk %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'edit_listing' listing.pk %}" class="button bg-utrgv-orange text-white pt-2 pb-2 pl-6 pr-6 ml-1 mr-1 rounded-4xl">Edit</a>
+                <a href="{% url 'delete_listing' listing.pk %}" class="button bg-red-600 text-white pt-2 pb-2 pl-6 pr-6 ml-1 mr-1 rounded-4xl">Delete</a>
             {% endif %}
         </div>
 

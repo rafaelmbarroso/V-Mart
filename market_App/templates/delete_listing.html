@@ -5,19 +5,19 @@
         <title>VMart | Delete Prompt</title>
         <link href="../../static/output.css" rel="stylesheet" type="text/css">
     </head>
-    <body class="flex flex-col bg-stone-200 justify-center items-center w-screen h-screen">
+    <body class="flex flex-col font-lato bg-stone-200 justify-center items-center w-screen h-screen">
         <div class="bg-white rounded-4xl drop-shadow-lg drop-shadow-zinc-800 flex flex-col w-1/3 p-8">
-            <h2 class="text-2xl font-semibold font-black text-center p-4">Delete Listing</h2>
+            <h2 class="text-2xl font-figtree font-semibold font-black text-center p-4">Delete Listing</h2>
 
             <p class="text-lg font-semibold">Are you sure you want to delete <strong>{{ listing.title }}</strong>?</p>
 
             <div class="flex flex-row">
                 <form method="POST">
                     {% csrf_token %}
-                    <button class="bg-red-600 text-white font-semibold text-lg mt-2 mb-2 mr-2 pt-2 pb-2 pr-6 pl-6 rounded-4xl" type="submit">Yes, delete</button>
+                    <button class="bg-red-600 text-white font-figtree font-semibold text-lg mt-2 mb-2 mr-2 pt-2 pb-2 pr-6 pl-6 rounded-4xl" type="submit">Yes, delete</button>
                 </form>
 
-                <a class="bg-stone-200 text-black font-semibold text-lg mt-2 mb-2 ml-2 pt-2 pb-2 pr-6 pl-6 rounded-4xl" href="{% url 'profile' %}">Cancel</a>
+                <a class="bg-stone-200 text-black font-figtree font-semibold text-lg mt-2 mb-2 ml-2 pt-2 pb-2 pr-6 pl-6 rounded-4xl" href="{% url 'profile' %}">Cancel</a>
             </div>
         </div>
     </body>
