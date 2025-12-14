@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Marketplace</title>
-  <link href="../static/output.css" rel="stylesheet" type="text/css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marketplace</title>
+    <link href="../static/output.css" rel="stylesheet" type="text/css">
+  </head>
 
-<body class="font-lato flex flex-col w-screen h-screen justify-center items-center text-center bg-gradient-to-br from-utrgv-orange from-40% to-orange-200">
+  <body class="font-lato flex flex-col w-screen h-screen justify-center items-center text-center bg-gradient-to-br from-utrgv-orange from-40% to-orange-200">
 
-  <div class="container">
-    <h1 class="text-8xl font-figtree font-smibold text-white mb-3 text-shadow-2xs">Howdy! Welcome to V-Mart!</h1>
-    <p class="text-4xl text-white">Safe and trusted trades here!</p>
-    <br>
-    <!-- Sign-in button -->
-    <a href="{% url 'signin' %}" class="bg-stone-200 drop-shadow-xl drop-shadow-zinc-800 rounded-4xl border-black border-2 text-xl pl-6 pr-6 pt-2 pb-2 m-4 hover:bg-black hover:text-white">
-      Sign in With Your Username
-    </a>
-  </div>
+    <div class="container">
+      <h1 class="text-8xl font-figtree font-semibold text-white m-2 p-2">Howdy! Welcome to V-Mart!</h1>
+      <p class="text-4xl font-light text-white m-2 p-2">Safe and trusted trades here!</p>
+      <br>
+      <!-- Sign-in button -->
+      <a href="{% url 'signin' %}" class="bg-stone-200 drop-shadow-xl drop-shadow-zinc-600 border-2 border-stone-200 rounded-4xl text-2xl pl-12 pr-12 pt-4 pb-4 m-4 hover:bg-utrgv-orange hover:border-utrgv-orange hover:text-white transition-colors">
+        Sign in or join!
+      </a>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

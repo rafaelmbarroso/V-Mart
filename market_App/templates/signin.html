@@ -7,7 +7,7 @@
 </head>
 
 <body class="font-lato flex flex-col w-screen h-screen justify-center items-center text-center bg-gradient-to-br from-utrgv-orange from-40% to-orange-200">
-<div class="bg-stone-200 p-5 w-1/3 rounded-2xl flex flex-col drop-shadow-2xl drop-shadow-zinc-800">
+<div class="bg-white p-8 w-1/3 rounded-2xl flex flex-col drop-shadow-2xl drop-shadow-zinc-800">
     <h2 class="text-center text-3xl font-figtree font-semibold mb-4">Sign In</h2>
     <div class="flex flex-col justify-center items-center">
 
@@ -15,19 +15,19 @@
             {% csrf_token %}
 
             <div class="flex flex-row mb-3 p-2">
-                <label class="form-label mr-2 p-2">Username</label>
-                <input type="text" name="username" class="form-control bg-zinc-200 active:bg-white rounded-4xl pt-1 pb-1 pr-4 pl-4 w-50">
+                <label class="form-label mr-2 p-2 w-24">Username</label>
+                <input type="text" name="username" class="form-control bg-stone-200 autofill:bg-stone-200 active:bg-white rounded-4xl pt-1 pb-1 pr-4 pl-4 w-50">
             </div>
 
             <div class="flex flex-row mb-3 p-2">
-                <label class="form-label mr-2 p-2" for="password">Password</label>
+                <label class="form-label mr-2 p-2 w-24" for="password">Password</label>
                 <div class="input-group flex flex-row">
                     <input type="password"
                            name="password"
                            id="password"
-                           class="form-control bg-zinc-200 active:bg-white rounded-4xl pt-1 pb-1 pr-4 pl-4 w-50">
+                           class="form-control bg-stone-200 autofill:bg-stone-200 active:bg-white rounded-4xl pt-1 pb-1 pr-4 pl-4 w-50">
                     <button type="button"
-                            class="button bg-white border-2 border-black text-black rounded-4xl pt-1 pb-1 pr-4 pl-4"
+                            class="button border-black text-black rounded-4xl pt-1 pb-1 pr-4 pl-4 w-16"
                             id="togglePassword">
                         Show
                     </button>
@@ -40,12 +40,12 @@
                 {% endfor %}
             {% endif %}
 
-            <button class="button pt-2 pb-2 pl-4 pr-4 m-2 border-2 border-black text-black rounded-4xl">Sign In</button>
+            <button class="button pt-2 pb-2 pl-4 pr-4 m-2 rounded-4xl bg-utrgv-orange text-white w-48 border-2 border-utrgv-orange hover:bg-white hover:text-utrgv-orange transition-colors">Sign In</button>
         </form>
 
         <div class="text-center mt-4">
             <p class="text-muted">Don't have an account?</p>
-            <a href="{% url 'signup' %}" class="btn btn-outline-primary w-100">
+            <a href="{% url 'signup' %}" class="hover:underline">
                 Create an Account
             </a>
         </div>
