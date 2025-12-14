@@ -9,22 +9,20 @@
 <body class="flex flex-col items-center bg-stone-200 font-lato w-screen h-screen">
 
 <nav class="flex flex-row align-center w-screen bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
-    <a class="text-2xl text-white" href="#">Dashboard</a>
-    <div class="ms-auto">
-        
+    <a class="text-2xl font-semibold text-white" href="#">VMart</a>
+    <div class="ms-auto">      
         <a href="{% url 'profile' %}" class="text-xl text-white pr-2 pl-2">My Profile</a>
         <a href="{% url 'logout' %}" class="text-xl text-white pr-2 pl-2">Logout</a>
     </div>
 </nav>
 
-<div class="container py-5">
-
+<div class="flex flex-col m-8 p-8">
     <div class="text-center mb-5">
     <h1 class="text-3xl font-bold">Welcome, {{ user.username }}!</h1>
     <p class="text-muted">Sign in successful.</p>
 </div>
 
-<h3 class="text-xl font-semibold p-4">Current Listings</h3>
+<h3 class="text-2xl font-semibold p-4">Current Listings</h3>
 
 <!-- Search Bar -->
 <form method="GET" action="{% url 'dashboard' %}" class="flex justify-center mb-6">
@@ -48,8 +46,8 @@
 <div class="flex flex-row">
         {% for product in listings %}
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-            <div class="bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-md drop-shadow-zinc-800">
-                <div class="card-body">
+            <div class="bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-md drop-shadow-zinc-600">
+                <div class="flex flex-col">
                     
                     {% if product.image %}
                     <img src="{{ product.image.url }}" class="img-fluid mb-2" alt="{{ product.name }}">
@@ -69,19 +67,19 @@
                     </p>
 
                     <a href="{% url 'view_listing' product.pk %}"
-                       class="mt-2 inline-block text-center bg-utrgv-orange text-white pt-2 pb-2 pl-4 pr-4 rounded-4xl drop-shadow-md drop-shadow-zinc-800">
+                       class="mt-2 inline-block text-center bg-utrgv-orange text-white pt-2 pb-2 pl-4 pr-4 rounded-4xl">
                          View Listing
                     </a>
 
 
                     <!-- edit and delete function -->
                     {% if product.user == request.user.student %} 
-                     <div class="flex flex-row items-center">
-                        <a href="{% url 'edit_listing' product.pk %}" class="button w-100px bg-zinc-300 mr-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl">
+                     <div class="flex flex-row items-center mt-2">
+                        <a href="{% url 'edit_listing' product.pk %}" class="button text-center w-100px bg-zinc-300 mr-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-1/2">
                             Edit
                         </a>
 
-                        <a href="{% url 'delete_listing' product.pk %}" class="button w-100px bg-red-500 ml-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl">
+                        <a href="{% url 'delete_listing' product.pk %}" class="button text-center text-white w-100px bg-red-500 ml-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-1/2">
                             Delete
                         </a>
                      </div>
@@ -98,7 +96,7 @@
 
 <div class="fixed bottom-0 right-0 mb-10 mr-10">
     <div class="d-flex justify-content-start">
-        <a href="{% url 'create_listing' %}" class="button text-2xl text-white bg-utrgv-orange pt-4 pb-4 pl-6 pr-6 rounded-4xl drop-shadow-md drop-shadow-zinc-800">
+        <a href="{% url 'create_listing' %}" class="button text-2xl text-white bg-utrgv-orange pt-4 pb-4 pl-6 pr-6 rounded-4xl drop-shadow-md drop-shadow-zinc-600">
             + Create Listing
         </a>
     </div>

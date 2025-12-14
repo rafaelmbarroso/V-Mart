@@ -1,5 +1,5 @@
 module.exports = {
     content: [
-        "./**/*.html",
+        "./market_App/static/*.html",
     ],
 }
