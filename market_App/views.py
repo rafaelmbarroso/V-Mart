@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Student, Listings
 from .forms import SignupForm, Listing_Form
+from django.db.models import Q
 
 # Entry Page
 def home(request):
@@ -52,10 +53,21 @@ def signup(request):
 # Main Page, from here must be logged in to see things
 @login_required
 def dashboard(request):
-    listings = Listings.objects.all()
+    query = request.GET.get("q", "")
+
+    if query:
+        listings = Listings.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query)
+        )
+    else:
+        listings = Listings.objects.all()
+
     return render(request, 'mainPage.html', {
-        'listings': listings
+        'listings': listings,
+        'query': query,
     })
+
 # Send user back to sign in page
 def logOut(request):
     logout(request)
