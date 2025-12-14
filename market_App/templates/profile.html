@@ -2,40 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My Profile</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="../../static/output.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="bg-light">
+<body class="flex flex-col items-center bg-stone-200 font-lato">
 
-<div class="container py-5" style="max-width: 900px;">
+<nav class="flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+    <a class="text-2xl font-semibold font-figtree text-white" href="#">VMart</a>
+    <div class="ms-auto">      
+        <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Profile</a>
+        <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">Logout</a>
+    </div>
+</nav>
+
+<div class="flex flex-col items-center">
 
     <!-- Profile Card -->
-    <div class="mb-5">
-        <h1 class="mb-4 text-center">User Profile</h1>
+    <div class=" w-1/2 p-8 m-8">
+        <h1 class="text-center text-3xl font-figtree font-semibold m-2 p-2">User Profile</h1>
 
-        <div class="card shadow-sm p-4">
+        <div class="bg-white drop-shadow-md drop-shadow-zinc-600 rounded-xl p-8">
             <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
 
-            <div class="mt-4 text-center">
-                <a href="{% url 'dashboard' %}" class="btn btn-primary">Back to Shopping</a>
+            <div class="flex flex-row justify-center items-center text-center p-4">
+                <a href="{% url 'dashboard' %}" class="button bg-stone-200 text-black rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2">Back to Shopping</a>
 
                 <br><br>
 
-                <a href="{% url 'create_listing' %}" class="btn btn-primary">
+                <a href="{% url 'create_listing' %}" class="button bg-utrgv-orange text-white rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2">
                     + Create Listing
                 </a>
             </div>
         </div>
     </div>
 
-    <h3 class="mt-5 mb-3">My Listings</h3>
-
-    <div class="row g-4">
+   
+    <div class="pt-2 pb-2 pl-16 pr-16">
+    <h3 class="text-center text-3xl font-figtree font-semibold m-2 p-2">My Listings</h3>
+    <div class="flex flex-row justify-center">
         {% for item in my_listings %}
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card shadow-sm h-100">
+            <div class="w-1/5">
+                <div class="bg-white drop-shadow-md drop-shadow-zinc-600 rounded-xl p-8 m-2">
                     <div class="card-body">
                         {% if item.image %}
                         <img src="{{ item.image.url }}" class="img-fluid mb-2" alt="{{ item.name }}">
@@ -55,15 +63,14 @@
                             Created: {{ item.creation_Date|date:"M d, Y" }}
                         </p>
 
-                        <a href="{% url 'view_listing' item.pk %}" class="btn btn-outline-primary w-100">
-    View Listing
-</a>
+                        <a href="{% url 'view_listing' item.pk %}" class="inline-block font-figtree text-center bg-utrgv-orange text-white mt-2 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-full">View Listing</a>
                     </div>
                 </div>
             </div>
         {% empty %}
             <p class="text-muted">You have not created any listings yet.</p>
         {% endfor %}
+    </div>
     </div>
 
 </div>
