@@ -49,6 +49,12 @@
                         Created: {{ product.creation_Date|date:"M d, Y" }}
                     </p>
 
+                    <a href="{% url 'view_listing' product.pk %}"
+                       class="mt-2 inline-block text-center bg-utrgv-orange text-white pt-2 pb-2 pl-4 pr-4 rounded-4xl drop-shadow-md drop-shadow-zinc-800">
+                         View Listing
+                    </a>
+
+
                     <!-- edit and delete function -->
                     {% if product.user == request.user.student %} 
                      <div class="flex flex-row items-center">
