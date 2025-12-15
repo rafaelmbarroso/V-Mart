@@ -90,6 +90,12 @@ def profile(request):
         "my_listings": my_listings
     })
 
+#inbox user to user comm(will come soon)
+@login_required
+def inbox(request):
+    return render(request, "inbox.html")
+
+
 # Listing Creation
 @login_required
 def create_Listing(request):
