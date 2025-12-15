@@ -1,36 +1,118 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Bookmarks</title>
+    <link rel="stylesheet" href="{% static 'output.css' %}">
+
+    <style>
+        .bookmark-card {
+            width: 18rem;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bookmark-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .bookmark-image-placeholder {
+            width: 100%;
+            height: 160px;
+            background: #f5f5f4;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 
-<body>
+<body class="flex flex-col items-center bg-stone-200 font-lato min-h-screen">
 
-<h1>My Bookmarked Listings</h1>
+<!-- Navbar -->
+<nav class="flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+    <a class="text-2xl font-semibold font-figtree text-white"
+       href="{% url 'dashboard' %}">
+        VMart
+    </a>
 
-<a href="{% url 'profile' %}">Back to Profile</a>
-<br><br>
-
-{% for listing in bookmarks %}
-    <div>
-        <h3>{{ listing.name }}</h3>
-
-        {% if listing.price %}
-            <p>Price: ${{ listing.price }}</p>
-        {% endif %}
-
-        <p>{{ listing.description }}</p>
-
-        <a href="{% url 'view_listing' listing.pk %}">
-            View Listing
+    <div class="ms-auto">
+        <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">
+            My Profile
+        </a>
+        <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">
+            Logout
         </a>
     </div>
+</nav>
 
-    <hr>
-{% empty %}
-    <p>You have no bookmarked listings.</p>
-{% endfor %}
+<!-- Page Content -->
+<div class="w-full max-w-6xl p-8">
+
+    <h1 class="text-3xl font-bold font-figtree mb-6 text-center">
+        My Bookmarked Listings
+    </h1>
+
+    {% if bookmarks %}
+        <div class="flex flex-row flex-wrap justify-center">
+            {% for listing in bookmarks %}
+                <div class="bg-white p-4 m-3 rounded-xl drop-shadow-md drop-shadow-zinc-600 bookmark-card">
+
+                    {% if listing.image %}
+                        <img src="{{ listing.image.url }}"
+                             class="bookmark-image"
+                             alt="{{ listing.name }}">
+                    {% else %}
+                        <div class="bookmark-image-placeholder">
+                            No image
+                        </div>
+                    {% endif %}
+
+                    <h3 class="text-xl font-bold font-figtree">
+                        {{ listing.name }}
+                    </h3>
+
+                    {% if listing.price %}
+                        <p class="font-bold text-green-800">
+                            ${{ listing.price }}
+                        </p>
+                    {% endif %}
+
+                    <p class="text-zinc-700 text-sm">
+                        {{ listing.description|truncatewords:15 }}
+                    </p>
+
+                    <a href="{% url 'view_listing' listing.pk %}"
+                       class="mt-auto inline-block font-figtree text-center bg-utrgv-orange text-white pt-2 pb-2 pl-4 pr-4 rounded-4xl">
+                        View Listing
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="text-center mt-16">
+            <p class="text-zinc-600 font-figtree text-lg">
+                You have no bookmarked listings yet.
+            </p>
+
+            <a href="{% url 'dashboard' %}"
+               class="inline-block mt-4 bg-utrgv-orange text-white font-figtree pt-2 pb-2 pl-6 pr-6 rounded-4xl">
+                Browse Listings
+            </a>
+        </div>
+    {% endif %}
+
+</div>
 
 </body>
 </html>
