@@ -14,4 +14,6 @@ urlpatterns = [
     path('delete_listing/<int:pk>/', views.delete_listing, name='delete_listing'),
     path('listing/<int:pk>/', views.view_listing, name='view_listing'),
     path("inbox/", views.inbox, name="inbox"),
+    path("bookmark/<int:pk>/", views.toggle_bookmark, name="toggle_bookmark"),
+    path("bookmarks/", views.bookmarks, name="bookmarks"),
 ]

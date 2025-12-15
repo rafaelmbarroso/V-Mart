@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookmarks</title>
+</head>
+
+<body>
+
+<h1>My Bookmarked Listings</h1>
+
+<a href="{% url 'profile' %}">Back to Profile</a>
+<br><br>
+
+{% for listing in bookmarks %}
+    <div>
+        <h3>{{ listing.name }}</h3>
+
+        {% if listing.price %}
+            <p>Price: ${{ listing.price }}</p>
+        {% endif %}
+
+        <p>{{ listing.description }}</p>
+
+        <a href="{% url 'view_listing' listing.pk %}">
+            View Listing
+        </a>
+    </div>
+
+    <hr>
+{% empty %}
+    <p>You have no bookmarked listings.</p>
+{% endfor %}
+
+</body>
+</html>

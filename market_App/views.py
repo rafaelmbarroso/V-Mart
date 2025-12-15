@@ -52,7 +52,6 @@ def signup(request):
 
 # Main Page, from here must be logged in to see things
 @login_required
-@login_required
 def dashboard(request):
     query = request.GET.get("q", "")
     sort = request.GET.get("sort", "current")  # current | newest
@@ -75,6 +74,28 @@ def dashboard(request):
         'query': query,
         'sort': sort,
     })
+
+@login_required
+def toggle_bookmark(request, pk):
+    listing = get_object_or_404(Listings, pk=pk)
+    student = request.user.student
+
+    if listing in student.bookmarks.all():
+        student.bookmarks.remove(listing)
+    else:
+        student.bookmarks.add(listing)
+
+    return redirect(request.META.get("HTTP_REFERER", "dashboard"))
+
+@login_required
+def bookmarks(request):
+    student = request.user.student
+    bookmarks = student.bookmarks.all()
+
+    return render(request, "bookmarks.html", {
+        "bookmarks": bookmarks
+    })
+
 
 # Send user back to sign in page
 def logOut(request):

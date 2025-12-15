@@ -7,6 +7,12 @@ class Student(models.Model):
     email = models.EmailField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
+    bookmarks = models.ManyToManyField(
+        "Listings",
+        related_name="bookmarked_by",
+        blank=True
+    )
+
     def __str__(self):
         return self.username
 

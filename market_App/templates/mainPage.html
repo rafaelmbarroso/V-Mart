@@ -66,11 +66,23 @@
   </div>
 </form>
 
-
 <div class="flex flex-row flex-wrap justify-center">
         {% for product in listings %}
         <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-            <div class="bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-md drop-shadow-zinc-600">
+            <div class="relative bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-md drop-shadow-zinc-600">
+              <!-- Bookmarks -->
+                {% if product.pk %}
+                <div class="absolute top-3 right-3">
+                  <a href="{% url 'toggle_bookmark' product.pk %}"
+                    class="text-2xl hover:scale-110 transition">
+                    {% if product in request.user.student.bookmarks.all %}
+                    ⭐
+                {% else %}
+                    ☆
+              {% endif %}
+            </a>
+        </div>
+      {% endif %}
                 <div class="flex flex-col">
                     
                     {% if product.image %}
