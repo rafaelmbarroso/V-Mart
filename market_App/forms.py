@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Listing_Form(forms.ModelForm):
     class Meta:
         model = Listings
-        fields = ['name', 'description', 'price', 'image']
+        fields = ['name', 'description', 'price', 'image', 'is_on_campus']
 
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)

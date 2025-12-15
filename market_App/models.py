@@ -22,6 +22,8 @@ class Listings(models.Model):
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     creation_Date = models.DateTimeField(auto_now_add=True)
+    is_on_campus = models.BooleanField(default=False)
+
 
     #image upload 
     image = models.ImageField(

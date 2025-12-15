@@ -5,13 +5,23 @@
     <title>Create Listing</title>
     <link href="../../static/output.css" rel="stylesheet" type="text/css">
     <style>
-        #uploader input, textarea{
-            background-color: oklch(92.3% 0.003 48.717);
-            padding: 4pt;
-            margin: 4pt;
-            border-radius: 4pt;
-            min-width: 100%;
-        }
+         #uploader input:not([type="checkbox"]),
+        #uploader textarea {
+        background-color: oklch(92.3% 0.003 48.717);
+        padding: 4pt;
+        margin: 4pt;
+        border-radius: 4pt;
+        min-width: 100%;
+    }
+
+    /* Style the checkbox so it doesn't stretch */
+    #uploader input[type="checkbox"] {
+        min-width: auto;
+        width: 18px;
+        height: 18px;
+        margin: 0 6px 0 0;
+        padding: 0;
+    }
     </style>
 </head>
 
@@ -27,29 +37,46 @@
 
 <div class="flex flex-col justify-center items-center h-full w-full">
     <h1 class="text-3xl font-semibold text-center m-4 p-4">Create New Listing</h1>
+
     <div class="flex flex-col bg-white rounded-4xl w-1/4 p-8 drop-shadow-lg drop-shadow-zinc-600">
         <form method="POST" enctype="multipart/form-data" id="uploader">
             {% csrf_token %}
 
             {% for field in form %}
-                <div class="mb-3">
-                    <label class="form-label">{{ field.label }}</label>
-                    {{ field }}
-                    {% if field.errors %}
-                        <div class="text-danger small">{{ field.errors }}</div>
-                    {% endif %}
-                </div>
+                {% if field.name == "is_on_campus" %}
+                    <div class="mb-4 flex items-center gap-3">
+                        <label class="font-figtree text-zinc-800 whitespace-nowrap">
+                            Is your listing in campus:
+                        </label>
+                        {{ field }}
+                        <span class="font-figtree text-zinc-700 whitespace-nowrap">Yes</span>
+                    </div>
+                {% else %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
             {% endfor %}
-            <div class="flex flex-row w-max">
-                <button type="submit" class="button w-max bg-utrgv-orange text-white text-center pt-2 pb-2 pr-4 pl-4 mr-1 rounded-4xl">
+
+            <div class="flex flex-row w-max mt-4">
+                <button type="submit"
+                        class="button w-max bg-utrgv-orange text-white text-center pt-2 pb-2 pr-4 pl-4 mr-1 rounded-4xl">
                     Create Listing
                 </button>
-                <a href="{% url 'dashboard' %}" class="button w-max bg-stone-200 text-black text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl">Cancel</a>
+
+                <a href="{% url 'dashboard' %}"
+                   class="button w-max bg-stone-200 text-black text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl">
+                    Cancel
+                </a>
             </div>
         </form>
     </div>
-
 </div>
 
 </body>
 </html>
+
