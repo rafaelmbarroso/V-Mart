@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
-    <link href="../static/output.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'output.css' %}">
+
 </head>
 
 <body class="flex flex-col items-center bg-stone-200 font-lato">
@@ -26,26 +28,43 @@
     <p class="text-muted font-figtree">Sign in successful.</p>
 </div>
 
-<h3 class="text-2xl font-semibold font-figtree p-4">Current Listings</h3>
+<h3 class="text-2xl font-semibold font-figtree p-4">
+  {% if sort == "newest" %}
+    Newest Listings
+  {% else %}
+    Current Listings
+  {% endif %}
+</h3>
+
 
 <!-- Search Bar -->
 <form method="GET" action="{% url 'dashboard' %}" class="flex justify-center mb-6">
-  <div class="flex w-full max-w-xl">
+  <div class="flex w-full max-w-xl gap-2">
     <input
       type="text"
       name="q"
       value="{{ query }}"
       placeholder="Search listings..."
-      class="w-full p-3 text-lg font-figtree rounded-l-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-utrgv-orange"
+      class="w-full p-3 text-lg font-figtree rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-utrgv-orange"
     />
+
+    <select
+      name="sort"
+      class="p-3 text-lg font-figtree rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-utrgv-orange"
+    >
+      <option value="current" {% if sort == "current" %}selected{% endif %}>Current</option>
+      <option value="newest" {% if sort == "newest" %}selected{% endif %}>Newest</option>
+    </select>
+
     <button
       type="submit"
-      class="bg-utrgv-orange text-lg font-figtree text-white px-6 rounded-r-xl hover:opacity-90"
+      class="bg-utrgv-orange text-lg font-figtree text-white px-6 rounded-xl hover:opacity-90"
     >
-      Search
+      Go
     </button>
   </div>
 </form>
+
 
 <div class="flex flex-row flex-wrap justify-center">
         {% for product in listings %}

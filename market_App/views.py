@@ -52,20 +52,28 @@ def signup(request):
 
 # Main Page, from here must be logged in to see things
 @login_required
+@login_required
 def dashboard(request):
     query = request.GET.get("q", "")
+    sort = request.GET.get("sort", "current")  # current | newest
+
+    listings = Listings.objects.all()
 
     if query:
-        listings = Listings.objects.filter(
+        listings = listings.filter(
             Q(name__icontains=query) |
             Q(description__icontains=query)
         )
+
+    if sort == "newest":
+        listings = listings.order_by("-creation_Date")  # newest first
     else:
-        listings = Listings.objects.all()
+        listings = listings.order_by("creation_Date")   # current/oldest first
 
     return render(request, 'mainPage.html', {
         'listings': listings,
         'query': query,
+        'sort': sort,
     })
 
 # Send user back to sign in page
