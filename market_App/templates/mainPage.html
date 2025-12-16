@@ -1,142 +1,143 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="{% static 'output.css' %}">
+  <head>
+      <meta charset="UTF-8">
+      <title>Main Page</title>
+      <link rel="stylesheet" href="{% static 'output.css' %}">
 
-</head>
+  </head>
 
-<body class="flex flex-col items-center bg-stone-200 font-lato">
+  <body class="flex flex-col items-center bg-stone-200 font-lato">
 
-<nav class="flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
-    <a class="text-2xl font-semibold font-figtree text-white"
-       href="{% url 'dashboard' %}">
-       VMart
-    </a>
-
-    <div class="ms-auto">
-        <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2">Inbox</a>
-        <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Profile</a>
-        <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">Logout</a>
-    </div>
-</nav>
-
-<div class="flex flex-col m-8 p-8">
-    <div class="text-center mb-5">
-    <h1 class="text-3xl font-bold font-figtree">Welcome, {{ user.username }}!</h1>
-    <p class="text-muted font-figtree">Sign in successful.</p>
-</div>
-
-<h3 class="text-2xl font-semibold font-figtree p-4">
-  {% if sort == "newest" %}
-    Newest Listings
-  {% else %}
-    Current Listings
-  {% endif %}
-</h3>
-
-
-<!-- Search Bar -->
-<form method="GET" action="{% url 'dashboard' %}" class="flex justify-center mb-6">
-  <div class="flex w-full max-w-xl gap-2">
-    <input
-      type="text"
-      name="q"
-      value="{{ query }}"
-      placeholder="Search listings..."
-      class="w-full p-3 text-lg font-figtree rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-utrgv-orange"
-    />
-
-    <select
-      name="sort"
-      class="p-3 text-lg font-figtree rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-utrgv-orange"
-    >
-      <option value="current" {% if sort == "current" %}selected{% endif %}>Current</option>
-      <option value="newest" {% if sort == "newest" %}selected{% endif %}>Newest</option>
-    </select>
-
-    <button
-      type="submit"
-      class="bg-utrgv-orange text-lg font-figtree text-white px-6 rounded-xl hover:opacity-90"
-    >
-      Go
-    </button>
-  </div>
-</form>
-
-<div class="flex flex-row flex-wrap justify-center">
-        {% for product in listings %}
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
-            <div class="relative bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-md drop-shadow-zinc-600">
-              <!-- Bookmarks -->
-                {% if product.pk %}
-                <div class="absolute top-3 right-3">
-                  <a href="{% url 'toggle_bookmark' product.pk %}"
-                    class="text-2xl hover:scale-110 transition">
-                    {% if product in request.user.student.bookmarks.all %}
-                    ⭐
-                {% else %}
-                    ☆
-              {% endif %}
-            </a>
-        </div>
-      {% endif %}
-                <div class="flex flex-col">
-                    
-                    {% if product.image %}
-                    <img src="{{ product.image.url }}" class="img-fluid mb-2" alt="{{ product.name }}">
-                    {% endif %}
-
-                
-                    <h5 class="text-xl font-bold font-figtree">{{ product.name }}</h5>
-
-                    {% if product.price %}
-                    <p class="font-bold text-green-800">${{ product.price }}</p>
-                    {% endif %}
-
-                    <p class="text-zinc-700">{{ product.description|truncatewords:15 }}</p>
-
-                    <p class="text-zinc-700">
-                        Created: {{ product.creation_Date|date:"M d, Y" }}
-                    </p>
-
-                    <a href="{% url 'view_listing' product.pk %}"
-                       class="mt-2 inline-block font-figtree text-center bg-utrgv-orange text-white pt-2 pb-2 pl-4 pr-4 rounded-4xl">
-                         View Listing
-                    </a>
-
-
-                    <!-- edit and delete function -->
-                    {% if product.user == request.user.student %} 
-                     <div class="flex flex-row items-center mt-2">
-                        <a href="{% url 'edit_listing' product.pk %}" class="button font-figtree text-center w-100px bg-zinc-300 mr-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-1/2">
-                            Edit
-                        </a>
-
-                        <a href="{% url 'delete_listing' product.pk %}" class="button font-figtree text-center text-white w-100px bg-red-500 ml-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-1/2">
-                            Delete
-                        </a>
-                     </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        {% empty %}
-            <p class="text-muted">There are no listings yet.</p>
-        {% endfor %}
-    </div>
-
-</div>
-
-<div class="fixed bottom-0 right-0 mb-10 mr-10">
-    <div class="d-flex justify-content-start">
-        <a href="{% url 'create_listing' %}" class="button text-2xl font-figtree text-white bg-utrgv-orange pt-4 pb-4 pl-6 pr-6 rounded-4xl drop-shadow-md drop-shadow-zinc-600">
-            + Create Listing
+    <nav class="fixed top-0 z-10 flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+        <a class="text-2xl font-semibold font-figtree text-white"
+          href="{% url 'dashboard' %}">
+          VMart
         </a>
-    </div>
-</div>
 
-</body>
+        <div class="ms-auto">
+            <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2">Inbox</a>
+            <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Bookmarks</a>
+            <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Profile</a>
+            <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">Logout</a>
+        </div>
+    </nav>
+
+    <div class="flex flex-col z-0 mt-20">
+      <div class="flex flex-col m-8 p-8">
+          <div class="text-center mb-5">
+          <h1 class="text-3xl font-bold font-figtree">Welcome, {{ user.username }}!</h1>
+          <p class="text-muted font-figtree">Sign in successful.</p>
+      </div>
+
+      <h3 class="text-2xl font-semibold font-figtree p-4">
+        {% if sort == "newest" %}
+          Newest Listings
+        {% else %}
+          Current Listings
+        {% endif %}
+      </h3>
+
+
+      <!-- Search Bar -->
+      <form method="GET" action="{% url 'dashboard' %}" class="flex justify-center mb-6">
+        <div class="flex w-full max-w-xl gap-2">
+          <input
+            type="text"
+            name="q"
+            value="{{ query }}"
+            placeholder="Search listings..."
+            class="w-full p-3 text-lg font-figtree rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-utrgv-orange"
+          />
+
+          <select
+            name="sort"
+            class="p-3 text-lg font-figtree rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-utrgv-orange"
+          >
+            <option value="current" {% if sort == "current" %}selected{% endif %}>Current</option>
+            <option value="newest" {% if sort == "newest" %}selected{% endif %}>Newest</option>
+          </select>
+
+          <button
+            type="submit"
+            class="bg-utrgv-orange text-lg font-figtree text-white px-6 rounded-xl hover:opacity-90 transition-opacity"
+          >
+            Go
+          </button>
+        </div>
+      </form>
+
+      <div class="flex flex-row flex-wrap justify-center">
+              {% for product in listings %}
+              <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                  <div class="relative bg-white p-4 m-3 w-70 rounded-xl flex flex-col drop-shadow-md drop-shadow-zinc-600">
+                    <!-- Bookmarks -->
+                      {% if product.pk %}
+                      <div class="absolute top-3 right-3">
+                        <a href="{% url 'toggle_bookmark' product.pk %}"
+                          class="text-2xl hover:scale-110 transition">
+                          {% if product in request.user.student.bookmarks.all %}
+                          ⭐
+                      {% else %}
+                          ☆
+                    {% endif %}
+                  </a>
+              </div>
+            {% endif %}
+                      <div class="flex flex-col">
+                          
+                          {% if product.image %}
+                          <img src="{{ product.image.url }}" class="img-fluid mb-2" alt="{{ product.name }}">
+                          {% endif %}
+
+                      
+                          <h5 class="text-xl font-bold font-figtree">{{ product.name }}</h5>
+
+                          {% if product.price %}
+                          <p class="font-bold text-green-800">${{ product.price }}</p>
+                          {% endif %}
+
+                          <p class="text-zinc-700">{{ product.description|truncatewords:15 }}</p>
+
+                          <p class="text-zinc-700">
+                              Created: {{ product.creation_Date|date:"M d, Y" }}
+                          </p>
+
+                          <a href="{% url 'view_listing' product.pk %}"
+                            class="mt-2 inline-block font-figtree text-center bg-utrgv-orange text-white pt-2 pb-2 pl-4 pr-4 rounded-4xl">
+                              View Listing
+                          </a>
+
+
+                          <!-- edit and delete function -->
+                          {% if product.user == request.user.student %} 
+                          <div class="flex flex-row items-center mt-2">
+                              <a href="{% url 'edit_listing' product.pk %}" class="button font-figtree text-center w-100px bg-zinc-300 mr-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-1/2 hover:opacity-90 transition-opacity">
+                                  Edit
+                              </a>
+
+                              <a href="{% url 'delete_listing' product.pk %}" class="button font-figtree text-center text-white w-100px bg-red-500 ml-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-1/2 hover:opacity-90 transition-opacity">
+                                  Delete
+                              </a>
+                          </div>
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>
+              {% empty %}
+                  <p class="text-muted">There are no listings yet.</p>
+              {% endfor %}
+          </div>
+      </div>
+
+      <div class="fixed bottom-0 right-0 mb-10 mr-10">
+          <div class="d-flex justify-content-start">
+              <a href="{% url 'create_listing' %}" class="button text-2xl font-figtree text-white bg-utrgv-orange pt-4 pb-4 pl-6 pr-6 rounded-4xl drop-shadow-md drop-shadow-zinc-600">
+                  + Create Listing
+              </a>
+          </div>
+      </div>
+    </div>
+  </body>
 </html>
