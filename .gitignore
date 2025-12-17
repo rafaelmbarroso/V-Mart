@@ -4,10 +4,13 @@
 # Ignore Pycache
 /market_App/__pycache__
 /studentmarketplace/__pycache__
+/market_App/migrations/__pycache__
 # Ignore PyCharm files
 /.idea/
 # Extras to ignore
 /package-lock.json
 /package.json
+# Ignore the DB, keeps from overwritting the demo data for presentation
+db.sqlite3
 # Most importantly, ignore the venv
 /venv
