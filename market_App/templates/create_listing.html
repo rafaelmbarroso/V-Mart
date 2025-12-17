@@ -7,7 +7,8 @@
     <style>
         #uploader input:not([type="checkbox"]),
         #uploader textarea {
-        background-color: oklch(92.3% 0.003 48.717);
+        border-width: 1px;
+        border-color: oklch(92.3% 0.003 48.717);
         padding: 4pt;
         margin: 4pt;
         border-radius: 4pt;
@@ -28,17 +29,17 @@
 <body class="flex flex-col items-center bg-stone-200 font-lato w-screen h-screen">
 
 <!-- Navbar -->
-<nav class="fixed top-0 z-10 flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
-    <a class="text-2xl font-semibold font-figtree text-white"
+<nav class="fixed top-0 z-10 flex flex-row items-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+    <a class="text-3xl font-bold font-figtree text-white"
         href="{% url 'dashboard' %}">
         VMart
     </a>
 
     <div class="ms-auto">
-        <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2">Inbox</a>
-        <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Bookmarks</a>
-        <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Profile</a>
-        <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">Logout</a>
+        <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Inbox</a>
+        <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Bookmarks</a>
+        <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Profile</a>
+        <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Logout</a>
     </div>
 </nav>
 
@@ -71,12 +72,12 @@
 
             <div class="flex flex-row w-max mt-4">
                 <button type="submit"
-                        class="button w-max bg-utrgv-orange text-white text-center pt-2 pb-2 pr-4 pl-4 mr-1 rounded-4xl">
+                        class="button w-max bg-utrgv-orange text-white text-center pt-2 pb-2 pr-4 pl-4 mr-1 rounded-4xl border-2 border-utrgv-orange hover:bg-white hover:text-utrgv-orange transition-colors">
                     Create Listing
                 </button>
 
                 <a href="{% url 'dashboard' %}"
-                   class="button w-max bg-stone-200 text-black text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl">
+                   class="button w-max bg-stone-200 text-black text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl border-2 border-zinc-300 hover:border-black hover:text-black transition-colors">
                     Cancel
                 </a>
             </div>

@@ -7,17 +7,17 @@
 
 <body class="flex flex-col items-center bg-stone-200 font-lato">
 
-<nav class="fixed top-0 z-10 flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
-        <a class="text-2xl font-semibold font-figtree text-white"
+    <nav class="fixed top-0 z-10 flex flex-row items-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+        <a class="text-3xl font-bold font-figtree text-white"
           href="{% url 'dashboard' %}">
           VMart
         </a>
 
         <div class="ms-auto">
-            <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2">Inbox</a>
-            <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Bookmarks</a>
-            <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Profile</a>
-            <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">Logout</a>
+            <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Inbox</a>
+            <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Bookmarks</a>
+            <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Profile</a>
+            <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Logout</a>
         </div>
     </nav>
 
@@ -31,15 +31,15 @@
             <p><strong>Email:</strong> {{ user.email }}</p>
 
             <div class="flex flex-row justify-center items-center text-center p-4">
-                <a href="{% url 'dashboard' %}" class="button bg-stone-200 text-black rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2">Back to Shopping</a>
+                <a href="{% url 'dashboard' %}" class="button bg-stone-200 text-black rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2 border-2 border-zinc-300 hover:border-black hover:text-black transition-colors">Back to Shopping</a>
 
                 <br><br>
 
-                <a href="{% url 'create_listing' %}" class="button bg-utrgv-orange text-white rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2">
+                <a href="{% url 'create_listing' %}" class="button bg-utrgv-orange text-white rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2 border-2 border-utrgv-orange hover:bg-white hover:text-utrgv-orange transition-colors">
                     + Create Listing
 
                         <a href="{% url 'bookmarks' %}"
-                        class="button bg-yellow-400 text-black rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2">
+                        class="button bg-yellow-400 text-black rounded-4xl pr-6 pl-6 pt-2 pb-2 mr-2 ml-2 border-2 border-yellow-400 hover:bg-white transition-colors">
                         ⭐ View Bookmarks
                     </a>
                 </a>
@@ -73,7 +73,7 @@
                             Created: {{ item.creation_Date|date:"M d, Y" }}
                         </p>
 
-                        <a href="{% url 'view_listing' item.pk %}" class="inline-block font-figtree text-center bg-utrgv-orange text-white mt-2 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-full">View Listing</a>
+                        <a href="{% url 'view_listing' item.pk %}" class="inline-block font-figtree text-center bg-utrgv-orange text-white mt-2 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-full border-2 border-utrgv-orange hover:bg-white hover:text-utrgv-orange transition-colors">View Listing</a>
                     </div>
                 </div>
             </div>

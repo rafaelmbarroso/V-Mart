@@ -8,26 +8,26 @@
 
 <body class="flex flex-col w-full min-h-screen bg-stone-200 items-center font-lato">
 
-<nav class="fixed top-0 z-10 flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
-    <a class="text-2xl font-semibold font-figtree text-white"
-       href="{% url 'dashboard' %}">
-        VMart
-    </a>
+    <nav class="fixed top-0 z-10 flex flex-row items-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+        <a class="text-3xl font-bold font-figtree text-white"
+          href="{% url 'dashboard' %}">
+          VMart
+        </a>
 
-    <div class="ms-auto">
-        <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2">Inbox</a>
-        <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Bookmarks</a>
-        <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Profile</a>
-        <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">Logout</a>
-    </div>
-</nav>
+        <div class="ms-auto">
+            <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Inbox</a>
+            <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Bookmarks</a>
+            <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Profile</a>
+            <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Logout</a>
+        </div>
+    </nav>
 
 <div class="flex flex-col w-full items-center mt-24 mb-12">
 
 
     <div class="flex flex-col w-1/3 bg-white rounded-4xl p-8 drop-shadow-md drop-shadow-zinc-600">
-
-        <h2 class="text-3xl font-semibold mb-2">
+        <!---Listing Title-->
+        <h2 class="text-3xl font-figtree font-semibold mb-2">
             {{ listing.name }}
         </h2>
 
@@ -54,18 +54,18 @@
 
         <div class="flex flex-row gap-2">
             <a href="{% url 'dashboard' %}"
-               class="bg-stone-200 pt-2 pb-2 pl-4 pr-4 rounded-4xl">
+               class="bg-stone-200 pt-2 pb-2 pl-4 pr-4 rounded-4xl border-2 border-zinc-300 hover:border-black hover:text-black transition-colors">
                 Back
             </a>
 
             {% if listing.user == request.user.student %}
                 <a href="{% url 'edit_listing' listing.pk %}"
-                   class="bg-utrgv-orange text-white pt-2 pb-2 pl-6 pr-6 rounded-4xl">
+                   class="bg-utrgv-orange text-white pt-2 pb-2 pl-6 pr-6 rounded-4xl border-2 border-utrgv-orange hover:bg-white hover:text-utrgv-orange transition-colors">
                     Edit
                 </a>
 
                 <a href="{% url 'delete_listing' listing.pk %}"
-                   class="bg-red-600 text-white pt-2 pb-2 pl-6 pr-6 rounded-4xl">
+                   class="bg-red-600 text-white pt-2 pb-2 pl-6 pr-6 rounded-4xl border-2 border-red-500 hover:bg-white hover:text-red-500 transition-colors">
                     Delete
                 </a>
             {% endif %}
@@ -93,7 +93,7 @@
         <!-- comment list -->
         <div class="space-y-4">
             {% for c in comments %}
-                <div class="bg-white p-4 rounded-4xl drop-shadow-md drop-shadow-zinc-600">
+                <div class="bg-white p-4 rounded-4xl drop-shadow-md drop-shadow-zinc-600 pt-6 pb-6">
                     <p class="font-figtree font-semibold">
                         {{ c.user.username }}
                     </p>

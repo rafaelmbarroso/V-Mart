@@ -15,11 +15,17 @@
         </style>
     </head>
     <body class="flex flex-col font-lato bg-stone-200 justify-center items-center w-full h-full">
-        <nav class="flex flex-row align-center w-screen bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
-            <a class="text-2xl font-semibold text-white" href="{% url 'dashboard' %}">VMart</a>
+        <nav class="fixed top-0 z-10 flex flex-row items-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+            <a class="text-3xl font-bold font-figtree text-white"
+            href="{% url 'dashboard' %}">
+            VMart
+            </a>
+
             <div class="ms-auto">
-                <a href="{% url 'profile' %}" class="text-xl text-white pr-2 pl-2">My Profile</a>
-                <a href="{% url 'logout' %}" class="text-xl text-white pr-2 pl-2">Logout</a>
+                <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Inbox</a>
+                <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Bookmarks</a>
+                <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Profile</a>
+                <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Logout</a>
             </div>
         </nav>
         <div class="flex flex-col justify-center items-center h-full w-full">
@@ -29,8 +35,8 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 <div class="flex flex-row w-full">
-                    <button type="submit" class="button w-max bg-utrgv-orange text-white text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl">Save Changes</button>
-                    <a href="{% url 'profile' %}" class="button w-max bg-stone-200 text-black text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl">Back to My Profile</a>
+                    <button type="submit" class="button w-max bg-utrgv-orange text-white text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl border-2 border-utrgv-orange hover:bg-white hover:text-utrgv-orange transition-colors">Save Changes</button>
+                    <a href="{% url 'profile' %}" class="button w-max bg-stone-200 text-black text-center pt-2 pb-2 pr-4 pl-4 ml-1 rounded-4xl border-2 border-zinc-300 hover:border-black hover:text-black transition-colors">Back to My Profile</a>
                 </div>
             </form>
             </div>

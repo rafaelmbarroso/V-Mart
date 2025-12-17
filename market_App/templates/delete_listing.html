@@ -6,18 +6,31 @@
         <link href="../../static/output.css" rel="stylesheet" type="text/css">
     </head>
     <body class="flex flex-col font-lato bg-stone-200 justify-center items-center w-screen h-screen">
+    <nav class="fixed top-0 z-10 flex flex-row items-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+        <a class="text-3xl font-bold font-figtree text-white"
+          href="{% url 'dashboard' %}">
+          VMart
+        </a>
+
+        <div class="ms-auto">
+            <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Inbox</a>
+            <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Bookmarks</a>
+            <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Profile</a>
+            <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Logout</a>
+        </div>
+    </nav>
         <div class="bg-white rounded-4xl drop-shadow-lg drop-shadow-zinc-800 flex flex-col w-1/3 p-8">
-            <h2 class="text-2xl font-figtree font-semibold font-black text-center p-4">Delete Listing</h2>
+            <h2 class="text-3xl font-figtree font-semibold font-black text-center p-4">Delete Listing 🗑️</h2>
 
-            <p class="text-lg font-semibold">Are you sure you want to delete <strong>{{ listing.title }}</strong>?</p>
+            <p class="text-xl font-bold text-center">Are you sure you want to delete <strong>{{ listing.title }}</strong>?</p>
 
-            <div class="flex flex-row">
+            <div class="flex flex-row justify-center text-center mt-4 pt-4">
                 <form method="POST">
                     {% csrf_token %}
-                    <button class="bg-red-600 text-white font-figtree font-semibold text-lg mt-2 mb-2 mr-2 pt-2 pb-2 pr-6 pl-6 rounded-4xl" type="submit">Yes, delete</button>
+                    <button class="font-figtree w-100px bg-red-500 text-white mr-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-50 border-2 border-red-500 hover:bg-white hover:text-red-500 transition-colors" type="submit">Yes, delete</button>
                 </form>
 
-                <a class="bg-stone-200 text-black font-figtree font-semibold text-lg mt-2 mb-2 ml-2 pt-2 pb-2 pr-6 pl-6 rounded-4xl" href="{% url 'profile' %}">Cancel</a>
+                <a class="font-figtree w-100px bg-zinc-200 text-black mr-1 pt-2 pb-2 pl-4 pr-4 rounded-4xl w-50 border-2 border-zinc-300 hover:border-black hover:text-black transition-colors" href="{% url 'profile' %}">Cancel</a>
             </div>
         </div>
     </body>

@@ -9,19 +9,19 @@
 
 <body class="flex flex-col items-center bg-stone-200 font-lato">
 
-  <nav class="fixed top-0 z-10 flex flex-row align-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
-      <a class="text-2xl font-semibold font-figtree text-white"
-        href="{% url 'dashboard' %}">
-        VMart
-      </a>
+    <nav class="fixed top-0 z-10 flex flex-row items-center w-full bg-utrgv-orange drop-shadow-md drop-shadow-orange-900 p-4">
+        <a class="text-3xl font-bold font-figtree text-white"
+          href="{% url 'dashboard' %}">
+          VMart
+        </a>
 
-      <div class="ms-auto">
-          <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2">Inbox</a>
-          <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Bookmarks</a>
-          <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2">My Profile</a>
-          <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2">Logout</a>
-      </div>
-  </nav>
+        <div class="ms-auto">
+            <a href="{% url 'inbox' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Inbox</a>
+            <a href="{% url 'bookmarks' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Bookmarks</a>
+            <a href="{% url 'profile' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">My Profile</a>
+            <a href="{% url 'logout' %}" class="font-figtree text-xl text-white pr-2 pl-2 h-full hover:underline">Logout</a>
+        </div>
+    </nav>
 
   <div class="w-full max-w-2xl mt-16 p-8">
     <div class="bg-white rounded-xl p-8 drop-shadow-md drop-shadow-zinc-600 text-center">
