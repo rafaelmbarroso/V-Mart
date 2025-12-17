@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Student, Listings
 from .forms import SignupForm, Listing_Form
+from .forms import CommentForm
+from .models import ListingComment
 from django.db.models import Q
 
 # Entry Page
@@ -170,4 +172,32 @@ def delete_listing(request, pk):
 @login_required
 def view_listing(request, pk):
     listing = get_object_or_404(Listings, pk=pk)
-    return render(request, "view_listing.html", {"listing": listing})
+
+    # Top-level comments for this listing
+    comments = ListingComment.objects.filter(
+        listing=listing,
+        parent__isnull=True
+    ).select_related("user").order_by("created_at")
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.listing = listing
+            comment.user = request.user.student
+
+            # Optional reply support (works later if you add reply UI)
+            parent_id = request.POST.get("parent_id")
+            if parent_id:
+                comment.parent_id = int(parent_id)
+
+            comment.save()
+            return redirect("view_listing", pk=listing.pk)
+    else:
+        form = CommentForm()
+
+    return render(request, "view_listing.html", {
+        "listing": listing,
+        "comments": comments,
+        "form": form,
+    })

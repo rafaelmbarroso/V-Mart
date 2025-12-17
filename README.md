@@ -18,15 +18,22 @@ arrangements to acquire or give out items which they no longer need or that they
 
 Final Name = V-Mart Marketplace
 
-## FrameWork Methodology
+## Wireframe Methodology
 
-For the framework the idea was to figure out how our app was going to work. Figma was used as a way to facilitate the design process. The figma was just a visual representation of how we wanted our "views" to look. Features are subject to change, functionalities may be added or deleted from what the prototype displayed.
+For the wireframe the idea was to figure out how our app was going to work. Figma was used as a way to facilitate the design process. The figma was just a visual representation of how we wanted our "views" to look. Features are subject to change, functionalities may be added or deleted from what the prototype displayed.
 
 ## Front End Framwork
 
 For the rest of this project we plan to switch to using Tailwindcss over bootstrap for our front end framework. This is due to tailwinds' felxibility on the design process
 
 Figma Prototype Link: https://www.figma.com/proto/62PwoXtLwUPOOXqiOM2hPD/V-Mart-Wireframe-SWE1-3340-02?node-id=1-411&t=LrkaSQ9cuchYaujX-1&starting-point-node-id=12%3A69
+
+## Libraries Used
+For listing image upload and processing we utilized Pillow for Django, accessed via Pillow Python package
+
+pip install pillow
+
+
 
 
 ## Agile/Sprint Planning
@@ -44,4 +51,4 @@ Figma Prototype Link: https://www.figma.com/proto/62PwoXtLwUPOOXqiOM2hPD/V-Mart-
 Project by:
 Rafael M. Barroso - Frontend development using tailwindcss
 Ryan B - Primarily Backend development, created and managed all relavant views/models/forms/DB, tied urls together
-Daniel Aguirre - Aided in both front and back end, handled documentation and figma wireframe
+Daniel Aguirre - Aided in both front and back end, (handled all relevant views/models and forms, handled documentation and figma wireframe)

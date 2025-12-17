@@ -34,3 +34,31 @@ class Listings(models.Model):
 
     def __str__(self):
         return self.name
+
+class ListingComment(models.Model):
+    listing = models.ForeignKey(
+        Listings,
+        on_delete=models.CASCADE,
+        related_name="comments"
+    )
+
+    user = models.ForeignKey(
+        Student,
+        on_delete=models.CASCADE,
+        related_name="comments"
+    )
+
+    body = models.TextField(max_length=500)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    parent = models.ForeignKey(
+        "self",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="replies"
+    )
+
+    def __str__(self):
+        return f"{self.user.username} on {self.listing.name}"

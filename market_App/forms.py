@@ -1,5 +1,6 @@
 from django import forms
 from .models import Listings
+from .models import ListingComment
 from django.contrib.auth.models import User
 
 class Listing_Form(forms.ModelForm):
@@ -24,3 +25,15 @@ class SignupForm(forms.ModelForm):
             raise forms.ValidationError("Passwords do not match.")
 
         return cleaned_data
+    
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = ListingComment
+        fields = ["body"]
+        widgets = {
+            "body": forms.Textarea(attrs={
+                "rows": 3,
+                "placeholder": "Write a comment...",
+                "class": "w-full p-2 rounded-lg border border-zinc-300 font-figtree"
+            })
+        }
